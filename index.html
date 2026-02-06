@@ -50,6 +50,7 @@
                     type="button"
                     @click="addItem"
                     class="add-item-btn"
+                    :disabled="newCardItems.length >= 5"
             >
                 + Добавить пункт
             </button>
@@ -75,8 +76,14 @@
             >
                 <h3>{{ card.title }}</h3>
                 <ul class="card-items">
-                    <li v-for="(item, index) in card.items" :key="index">
-                        {{ item.text }}
+                    <li v-for="(item, index) in card.items" :key="index" class="card-item">
+                        <input
+                                type="checkbox"
+                                v-model="item.completed"
+                                @change="onItemToggle(card)"
+                                class="item-checkbox"
+                        >
+                        <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
                     </li>
                 </ul>
             </div>
@@ -91,8 +98,14 @@
             >
                 <h3>{{ card.title }}</h3>
                 <ul class="card-items">
-                    <li v-for="(item, index) in card.items" :key="index">
-                        {{ item.text }}
+                    <li v-for="(item, index) in card.items" :key="index" class="card-item">
+                        <input
+                                type="checkbox"
+                                v-model="item.completed"
+                                @change="onItemToggle(card)"
+                                class="item-checkbox"
+                        >
+                        <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
                     </li>
                 </ul>
             </div>
@@ -107,8 +120,14 @@
             >
                 <h3>{{ card.title }}</h3>
                 <ul class="card-items">
-                    <li v-for="(item, index) in card.items" :key="index">
-                        {{ item.text }}
+                    <li v-for="(item, index) in card.items" :key="index" class="card-item">
+                        <input
+                                type="checkbox"
+                                v-model="item.completed"
+                                @change="onItemToggle(card)"
+                                class="item-checkbox"
+                        >
+                        <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
                     </li>
                 </ul>
             </div>

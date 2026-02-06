@@ -61,6 +61,9 @@ let app = new Vue({
             if (savedCards) {
                 this.cards = JSON.parse(savedCards);
             }
+        },
+        onItemToggle(card) {
+            this.saveCards();
         }
     },
     computed: {
