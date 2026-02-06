@@ -203,19 +203,9 @@ body {
 .card h3 {
     margin: 0 0 10px 0;
     color: #333;
-    font-size: 18px;
+    font-size: 22px;
 }
 
-.card-items {
-    list-style: none;
-    padding: 0;
-}
-
-.card-items li {
-    padding: 5px 0;
-    color: #555;
-    font-size: 15px;
-}
 
 .error-messages {
     background: #ffebee;
@@ -232,25 +222,19 @@ body {
     font-size: 14px;
 }
 
-.card-item {
-    display: flex;
-    align-items: center;
+.card-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.card-items li {
     padding: 8px 0;
-    gap: 10px;
-}
-
-.item-checkbox {
-    width: 18px;
-    height: 18px;
-    cursor: pointer;
-}
-
-.card-item span {
     font-size: 16px;
     color: #555;
 }
 
-.card-item span.completed {
+.card-items li.completed {
     text-decoration: line-through;
     color: green;
 }
@@ -259,4 +243,13 @@ body {
     background: #ccc;
     color: #666;
     cursor: not-allowed;
+}
+
+.completed-date {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    color: #666;
+    font-style: italic;
 }

@@ -62,8 +62,25 @@ let app = new Vue({
                 this.cards = JSON.parse(savedCards);
             }
         },
-        onItemToggle(card) {
-            this.saveCards();
+
+        toggleItem(card, item) {
+            if (!item.completed) {
+                item.completed = true;
+
+                const totalItems = card.items.length;
+                const completedItems = card.items.filter(i => i.completed).length;
+                const percentage = (completedItems / totalItems) * 100;
+
+                if (card.column === 1 && percentage >= 50) {
+                    card.column = 2;
+                }
+                if (card.column === 2 && percentage === 100) {
+                    card.column = 3;
+                    card.completedAt = new Date().toLocaleDateString('ru-Ru');
+                }
+
+                this.saveCards();
+            }
         }
     },
     computed: {

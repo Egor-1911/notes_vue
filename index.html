@@ -76,14 +76,14 @@
             >
                 <h3>{{ card.title }}</h3>
                 <ul class="card-items">
-                    <li v-for="(item, index) in card.items" :key="index" class="card-item">
-                        <input
-                                type="checkbox"
-                                v-model="item.completed"
-                                @change="onItemToggle(card)"
-                                class="item-checkbox"
-                        >
-                        <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
+                    <li
+                            v-for="(item, index) in card.items"
+                            :key="index"
+                            :class="{ 'completed': item.completed }"
+                            @click="toggleItem(card, item)"
+                            :style="{ cursor: item.completed ? 'default' : 'pointer' }"
+                    >
+                        {{ item.text }}
                     </li>
                 </ul>
             </div>
@@ -98,14 +98,14 @@
             >
                 <h3>{{ card.title }}</h3>
                 <ul class="card-items">
-                    <li v-for="(item, index) in card.items" :key="index" class="card-item">
-                        <input
-                                type="checkbox"
-                                v-model="item.completed"
-                                @change="onItemToggle(card)"
-                                class="item-checkbox"
-                        >
-                        <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
+                    <li
+                            v-for="(item, index) in card.items"
+                            :key="index"
+                            :class="{ 'completed': item.completed }"
+                            @click="toggleItem(card, item)"
+                            :style="{ cursor: item.completed ? 'default' : 'pointer' }"
+                    >
+                        {{ item.text }}
                     </li>
                 </ul>
             </div>
@@ -120,16 +120,19 @@
             >
                 <h3>{{ card.title }}</h3>
                 <ul class="card-items">
-                    <li v-for="(item, index) in card.items" :key="index" class="card-item">
-                        <input
-                                type="checkbox"
-                                v-model="item.completed"
-                                @change="onItemToggle(card)"
-                                class="item-checkbox"
-                        >
-                        <span :class="{ 'completed': item.completed }">{{ item.text }}</span>
+                    <li
+                            v-for="(item, index) in card.items"
+                            :key="index"
+                            :class="{ 'completed': item.completed }"
+                            @click="toggleItem(card, item)"
+                            :style="{ cursor: item.completed ? 'default' : 'pointer' }"
+                    >
+                        {{ item.text }}
                     </li>
                 </ul>
+                <p v-if="card.completedAt" class="completed-date">
+                    Завершено: {{card.completedAt}}
+                </p>
             </div>
         </div>
     </div>
