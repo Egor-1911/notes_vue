@@ -5,7 +5,8 @@ let app = new Vue({
         cards: [],
         newCardTitle: '',
         newCardItems: ['', '', ''],
-        formErrors: []
+        formErrors: [],
+        newCardPriority: '1',
     },
     methods: {
         addItem() {
@@ -44,7 +45,8 @@ let app = new Vue({
                 title: this.newCardTitle.trim() || 'Новая заметка',
                 items: validItems.map(item => ({ text: item.trim(), completed: false })),
                 column: 1,
-                completedAt: null
+                completedAt: null,
+                priority: parseInt(this.newCardPriority)
             });
 
             this.saveCards();
@@ -55,6 +57,7 @@ let app = new Vue({
             this.newCardTitle = '';
             this.newCardItems = ['', '', ''];
             this.formErrors = [];
+            this.newCardPriority = '1';
         },
 
         saveCards() {
@@ -69,6 +72,10 @@ let app = new Vue({
         },
 
         toggleItem(card, item) {
+            if (card.column === 1 && this.isColumn1Blocked) {
+                return;
+            }
+
             if (!item.completed) {
                 item.completed = true;
 
@@ -94,13 +101,13 @@ let app = new Vue({
     },
     computed: {
         column1Cards() {
-            return this.cards.filter(card => card.column === 1);
+            return this.cards.filter(card => card.column === 1).sort((a, b) => a.priority - b.priority);
         },
         column2Cards() {
-            return this.cards.filter(card => card.column === 2);
+            return this.cards.filter(card => card.column === 2).sort((a, b) => a.priority - b.priority);
         },
         column3Cards() {
-            return this.cards.filter(card => card.column === 3);
+            return this.cards.filter(card => card.column === 3).sort((a, b) => a.priority - b.priority);
         },
         isColumn1Blocked() {
             return this.column2Cards.length >= 5;

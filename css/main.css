@@ -68,6 +68,12 @@ body {
     font-size: 20px;
 }
 
+.card h4 {
+    margin: 10px 0;
+    color: red;
+    font-size: 16px;
+}
+
 .add-card-form {
     background: white;
     border-radius: 8px;
@@ -103,6 +109,7 @@ body {
     font-size: 1rem;
     transition: border 0.3s;
     outline: none;
+    background: none;
 }
 
 
